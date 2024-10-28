@@ -10,9 +10,10 @@ function Userinput() {
  const [Amount, setAmount] = useState("")
  
   return (
-    <div className="border border-black rounded  w-[30vw] flex flex-col  bg-slate-300 max-[600px]:w-[65vw] ">
+    <div className="h-[100vh] absolute w-[100%] grid  place-items-center bg-black bg-opacity-80 z-10">
+    <div className=" flex flex-col w-[30vw] gap-2 p-4 max-[770px]:w-[80vw]" style={{backgroundColor:"#697565"}}>
       <div
-        className="border w-[25px] h-[25px] relative left-[100.5%]  hover:bg-black  hover:text-white flex items-center justify-center"
+        className="self-end cursor-pointer text-emerald-950"
         onClick={() => {
           expences.setContent(false);
         }}
@@ -35,28 +36,31 @@ function Userinput() {
             expences.setContent(false)
         }
     }
+    className="flex flex-col"
       >
         <input
           type="text"
           name="title"
           placeholder="TITLE"
-          className="border border-black rounded m-1"
+          className="py-1 px-2 mb-2 focus:outline-emerald-300"
           value={title}
           onChange={(e)=>setTitle(e.target.value)}
+          required
         />
         <input
           type="number"
           name="amount"
           placeholder="Enter Amount"
-          className="border border-black rounded m-1"
+          className="py-1 px-2 mb-2 focus:outline-emerald-300"
           value={Amount}
           onChange={(e)=>setAmount(e.target.value)}
+          required
         />
         <input
           type="text"
           name="description"
           placeholder="Description"
-          className="border border-black rounded m-1"
+          className="py-1 px-2 mb-2 focus:outline-emerald-300"
           value={description}
           onChange={(e)=>setDescription(e.target.value)}
         />
@@ -64,7 +68,7 @@ function Userinput() {
         <select
           name="categories"
           id="cat"
-          className="border border-black rounded m-1  hover:bg-black  hover:text-white  "
+          className="py-1 px-2 mb-2 focus:outline-emerald-300  hover:bg-emerald-900  hover:text-white  "
           value={category}
           onChange={(e)=>setCategory(e.target.value)}
         >
@@ -88,9 +92,10 @@ function Userinput() {
         <input
           type="submit"
           value="Add Expense"
-          className="border border-black rounded hover:bg-slate-500 ml-5 "
+          className="w-full bg-emerald-700 py-1 px-2 cursor-pointer font-bold text-white hover:bg-emerald-800"
         />
       </form>
+    </div>
     </div>
   );
 }

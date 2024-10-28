@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import { useUserContext } from '../Context';
 
+import '../App.css'
+
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6347', '#4682B4', '#6A5ACD'];
 
 const RADIAN = Math.PI / 180;
@@ -41,8 +43,10 @@ const ExpensePieChart = () => {
 
   return (
     <>
-    <div className='text-center h-[10vh] font-extrabold text-xl bg-slate-300'>Analytics</div>
-    <div className='flex justify-center items-center bg-slate-300'>
+    <div className='py-4 max-[400px]:pb-12 flex justify-center items-center flex-col' style={{backgroundColor:"#3C3D37"}}>
+
+    <div className='text-center h-[10vh] font-extrabold text-5xl text-emerald-700'>Analytics</div>
+    <div className='flex justify-center items-cente'>
       
       {pieChartData.length === 0 ? (
 <img src="Rectangle1.png" alt="" />      ) : (
@@ -65,6 +69,7 @@ const ExpensePieChart = () => {
       <Legend />
     </PieChart>
       )}
+    </div>
     </div>
     </>
   );
