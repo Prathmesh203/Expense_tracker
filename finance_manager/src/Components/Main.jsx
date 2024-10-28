@@ -1,6 +1,6 @@
 import React from "react";
 import { useUserContext } from "../Context";
-import { list } from "postcss";
+import '../App.css'
 
 function Main() {
   const expences = useUserContext();
@@ -10,45 +10,39 @@ function Main() {
   );
 
   return (
-    <main className="flex justify-around items-center h-[90vh]  bg-slate-300 border border-b-2 border-black ">
-      <div className="border border-black bg-green-300 w-[70%] h-[70%] flex justify-center">
-        <ul>
+    <main className="flex flex-col items-center gap-4 py-20" style={{backgroundColor:"#1E201E",maxHeight:"fit-content"}}>
+      <div className="h-[80%] w-[80%] ">
+        <ul className="grid grid-cols-3 gap-4 max-[770px]:grid-cols-2 max-[500px]:grid-cols-1">
           {expences.Expences.map((obj) => (
             <li>
-              <div className="bg-slate-100 w-[50vw] m-2 text-center">
-                <h1 className="font-extrabold text-xl">{obj.Title}</h1>
-                <p>{obj.Description}</p>
-                <h2>{obj.Amount}</h2>
-                <div>{obj.Category}</div>
+              <div className="py-12 flex flex-col items-center justify-center rounded-md  cursor-pointer hover:scale-[1.05] transition-transform bg-teal-950 text-center">
+                <h1 className="text-4xl font-bold text-white">{obj.Title}</h1>
+                <p className="text-xl font-semibold text-emerald-500">{obj.Description}</p>
+                <h2 className="text-2xl font-bold text-emerald-600">&#8377; {Math.floor(obj.Amount)}</h2>
+                <div className="text-xl font-semibold text-emerald-700"><i class="fa-solid fa-tags"></i>  {obj.Category}</div>
               </div>
             </li>
           ))}
         </ul>
       </div>
-      <div>
+      <div className="text-center">
         {expences.Budget ? (
-          <h1 className="bg-green-300 border border-black rounded text-center font-semibold m-1 p-1">
-            your budget is: {expences.Budget}
+          <h1 className="text-2xl text-emerald-400 font-bold">
+            Your budget is: &#8377; {expences.Budget}
           </h1>
         ) : (
-          <h1 className="bg-green-300 border border-black rounded text-center font-semibold m-1 p-1">
+          <h1 className="text-2xl text-emerald-400 font-bold">
             You Dont Have Any Budget
           </h1>
         )}
-        <div className="bg-green-300 border border-black rounded text-center font-semibold m-1 p-1">
+        <div className="text-xl text-emerald-600 font-semibold">
           {" "}
-          total expenses are: {totalExpences}
+          Your Total Expenses are: &#8377; {Math.floor(totalExpences)}
         </div>
-        {totalExpences <= expences.Budget ? (
-          <h1 className="bg-green-300 border border-black rounded text-center font-semibold m-1 p-1">
-            you are under the budget
-          </h1>
-        ) : (
-          <h1 className="bg-green-300 border border-black rounded text-center font-semibold m-1 p-1">
-            {" "}
-            you are out of budget {alert("you are out of budget")}
-          </h1>
-        )}
+        <div className="text-l text-emerald-700 font-semibold">
+          {" "}
+          Remaining Amount: &#8377; {Math.floor(expences.Budget-totalExpences)}
+        </div>
       </div>
     </main>
   );

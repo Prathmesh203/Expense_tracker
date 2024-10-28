@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useUserContext } from "../Context";
 import Userinput from "./Userinput";
+import '../App.css'
 
 function Navbar() {
   const expences = useUserContext();
@@ -11,27 +12,27 @@ function Navbar() {
   };
   return (
     <div>
-      <nav className="border border-black flex justify-between h-[17vh] items-center bg-slate-300 max-[600px]:h-[10vh] ">
-        <div className="w-[10vw] max-[600px]:hidden">wellcome {expences.username}</div>
+      <nav className="flex justify-around items-center py-4 " style={{backgroundColor:"#3C3D37"}}>
+        <div className="text-2xl font-extrabold max-[500px]:text-4xl max-[500px]:font-extrabold " style={{color:"#ECDFCC"}}>Welcome {expences.username}</div>
         <button
-          className="border border-black rounded hover:bg-slate-500 "
+          className="text-white font-bold py-2 px-4 max-[400px]:py-1 max-[400px]:px-2  bg-emerald-700 hover:bg-emerald-800"
           onClick={handleClick}
         >
-          Add Expences
+          Add Expences &#8377;
         </button>
-        <div>
+        <div className="max-[360px]:flex max-[360px]:flex-col max-[360px]:gap-2">
           <input
             type="number"
             placeholder="Budget"
-            className="border border-black rounded w-[12vw]"
+            className="py-2 px-4 mr-2 max-[400px]:py-1 max-[400px]:px-2  focus:outline-emerald-300"
             value={bud}
             onChange={(e)=>setbud(e.target.value)}
           />
-          <button className="border border-black rounded hover:bg-slate-500 " onClick={()=>expences.setBudget(bud)}>
-            Add Budget
+          <button className="text-white font-bold py-2 px-4 max-[400px]:py-1 max-[400px]:px-2 bg-emerald-700 hover:bg-emerald-800" onClick={()=>expences.setBudget(bud)}>
+            Add Budget &#8377;
           </button>
         </div>
-        <div className="bg-slate-900 h-[50px] w-[50px]  border-black rounded-full"></div>
+        <div className="h-[50px] w-[50px] bg-emerald-700 rounded-full profile"></div>
       </nav>
       <div>{expences.showContent && <Userinput />}</div>
     </div>
